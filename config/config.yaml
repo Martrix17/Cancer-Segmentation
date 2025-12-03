@@ -1,0 +1,24 @@
+defaults:
+  - model: unet
+  - data: data
+  - loss: uncertainty_dice_focal.yaml
+  - trainer: default
+  - _self_
+
+experiment_name: ISIC-Multitask
+run_name: ${model.model_name}_${model.encoder_name}_${now:%Y%m%d_%H%M}
+seed: 42
+resume: false
+local_save_dir: results/
+
+logging:
+  use_mlflow: true
+  uri: mlruns
+  experiment_name: ${experiment_name}
+  run_name: ${run_name}
+
+checkpointing:
+  save_dir: models/
+  filename: ${run_name}.pt
+  patience: 2
+  verbose: true

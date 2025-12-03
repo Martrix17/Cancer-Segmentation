@@ -1,0 +1,11 @@
+model_name: deeplab
+encoder_name: resnet50
+num_seg_classes: 1
+num_cls_classes: 7
+encoder_levels: [3, 4]
+projection_dim: 256
+hidden_dims: [256, 128]
+dropout: 0.4
+gem_p: 3.0
+freeze_encoder: false
+encoder_weights: imagenet

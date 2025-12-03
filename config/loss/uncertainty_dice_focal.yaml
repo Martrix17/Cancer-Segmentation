@@ -1,0 +1,15 @@
+type: uncertainty
+init_log_var: 0.0
+use_class_weights: true
+
+seg_loss:
+  type: dice
+  eps: 1e-7
+  apply_sigmoid: true
+
+cls_loss:
+  type: focal
+  gamma: 3
+  alpha: null
+  reduction: mean
+  label_smoothing: 0.05

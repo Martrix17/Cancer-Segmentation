@@ -1,0 +1,35 @@
+device: cuda
+epochs: 100
+use_compile: false
+tqdm_refresh_steps: 2
+
+val_every_n_epochs: 1
+compute_metrics_every_n_val: 1
+save_vis_every_n_val: 5
+n_vis_samples: 16
+
+class_weighting:
+  weighting_method: effective
+  beta: 0.995
+
+optimizer:
+  name: Adam
+  lr: 1e-4
+  weight_decay: 1e-5
+
+scheduler:
+  name: ReduceLROnPlateau
+  mode: "min"
+  factor: 0.1
+  patience: 4
+
+early_stopping:
+  patience: 15
+  delta: 0.001
+
+metrics:
+  segmentation:
+    num_classes: 1
+  classification:
+    num_classes: 7
+    average: "macro"
