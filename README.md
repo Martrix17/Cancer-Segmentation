@@ -25,10 +25,11 @@ Multi-task segmentation and classification pipeline for ISIC2018 Challenge's HAM
 ## Installation
 
 **Option 1: Local installation**
+
 ```bash
 # Clone repository
-git clone https://github.com/user/project.git
-cd project
+git clone https://github.com/Martrix17/Cancer-Segmentation.git
+cd Cancer-Segmentation
 
 # Install Python dependencies
 pip install -r requirements.txt
