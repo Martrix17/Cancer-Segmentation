@@ -85,7 +85,8 @@ def save_prediction_figures(figures: Dict[str, Image.Image], output_dir: str) ->
         output_dir: Directory to save images.
         dpi: Image resolution (dots per inch).
     """
-    preds_dir = Path(output_dir)
+    output_dir = Path(output_dir)
+    preds_dir = output_dir / "predictions"
     preds_dir.mkdir(parents=True, exist_ok=True)
 
     for name, fig in figures.items():
