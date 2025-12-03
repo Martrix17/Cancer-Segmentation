@@ -1,0 +1,38 @@
+{
+    "name": "Cancer Segmentation",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "runArgs": [
+        "--gpus=all",
+        "--shm-size=8g"
+    ],
+    "containerEnv": {
+        "PYTHONPATH": "${containerWorkspaceFolder}:${containerWorkspaceFolder}/src"
+    },
+    "postCreateCommand": "pip install --no-cache-dir -r requirements.txt && pre-commit install",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "editor.formatOnSave": true,
+                "python.formatting.provider": "black",
+                "python.analysis.extraPaths": [
+                    "src"
+                ],
+                "editor.codeActionsOnSave": {
+                    "source.organizeImports": "explicit",
+                    "source.fixAll.ruff": "explicit"
+                },
+                "jupyter.jupyterServerType": "local"
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-python.black-formatter",
+                "charliermarsh.ruff"
+            ]
+        }
+    },
+    "remoteUser": "developer"
+}
