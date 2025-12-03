@@ -1,0 +1,28 @@
+defaults:
+  - model: unet
+  - _self_
+
+# run_name: ${model.model_name}_${model.encoder_name}
+run_name: unet_resnet50_20251203_0016
+local_save_dir: results/
+
+data:
+  data_dir: infer_data/
+  class_names: [MEL, NV, BCC, AKIEC, BKL, DF, VASC]
+  image_size: [224, 224]
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+  num_workers: 12
+
+checkpointing:
+  save_dir: models/
+  filename: ${run_name}.pt
+  verbose: true
+
+trainer:
+  device: cuda
+  epochs: 3
+  use_compile: false
+  tqdm_refresh_steps: 2
+
+  n_vis_samples: 2
